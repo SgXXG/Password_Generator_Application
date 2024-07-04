@@ -83,5 +83,4 @@ namespace Password_Generator
             return new string (passwordChars);
         }
     }
-
 }
