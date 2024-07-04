@@ -49,7 +49,7 @@ namespace Password_Generator
             saveFileDialog.Filter = "Text file (*.txt)|*.txt|All files (*.*)|*.*";
             if (saveFileDialog.ShowDialog() == true)
             {
-                File.WriteAllText (saveFileDialog.FileName, "Password Length: " +  PasswordLength.Text.ToString() + "\n" + "Password: " + GeneratedPassword.Text.ToString() + "\n");
+                File.WriteAllText (saveFileDialog.FileName, "Password Length: " +  PasswordLength.Text.ToString() + "\n" + "Password: " + GeneratedPassword.Text.ToString() + "\n" + PasswordStrength.Text.ToString() + "\n");
             }
         }
 
