@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
+using System.IO;
+using Microsoft.Win32;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -38,6 +41,16 @@ namespace Password_Generator
             bool includeSymbols = IncludeSymbols.IsChecked ?? false;
 
             GeneratedPassword.Text = GeneratePassword (length, includeUppercase, includeNumbers, includeSymbols);
+        }
+
+        private void SaveToFile_Click ( object sender, RoutedEventArgs e )
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog ();
+            saveFileDialog.Filter = "Text file (*.txt)|*.txt|All files (*.*)|*.*";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                File.WriteAllText (saveFileDialog.FileName, "Password Length: " +  PasswordLength.Text.ToString() + "\n" + "Password: " + GeneratedPassword.Text.ToString() + "\n");
+            }
         }
 
         private string GeneratePassword ( int length, bool includeUppercase, bool includeNumbers, bool includeSymbols )

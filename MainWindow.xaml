@@ -15,6 +15,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <TextBlock Text="Password Length:" VerticalAlignment="Center"/>
@@ -26,5 +27,6 @@
 
         <Button Grid.Row="7" Content="Generate Password" Click="GeneratePassword_Click" Margin="5"/>
         <TextBox Grid.Row="8" x:Name="GeneratedPassword" Margin="5" VerticalScrollBarVisibility="Auto" TextWrapping="WrapWithOverflow" AllowDrop="False" AcceptsReturn="False" IsReadOnly="True"/>
+        <Button Grid.Row="9" Content="Save to file" Click="SaveToFile_Click" Margin="5"/>
     </Grid>
 </Window>
