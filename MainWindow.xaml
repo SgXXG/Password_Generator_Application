@@ -1,0 +1,30 @@
+﻿<Window x:Class="Password_Generator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Password Generator" Height="228" Width="582"
+        WindowStartupLocation="CenterScreen"
+        MinHeight="220" MinWidth="580">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Password Length:" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5"  x:Name="PasswordLength"/>
+
+        <CheckBox Grid.Row="2" Content="Include Uppercase Letters" x:Name="IncludeUppercase"/>
+        <CheckBox Grid.Row="3" Content="Include Numbers" x:Name="IncludeNumbers"/>
+        <CheckBox Grid.Row="4" Content="Include Symbols" x:Name="IncludeSymbols"/>
+
+        <Button Grid.Row="7" Content="Generate Password" Click="GeneratePassword_Click" Margin="5"/>
+        <TextBox Grid.Row="8" x:Name="GeneratedPassword" Margin="5" VerticalScrollBarVisibility="Auto" TextWrapping="WrapWithOverflow" AllowDrop="False" AcceptsReturn="False" IsReadOnly="True"/>
+    </Grid>
+</Window>
