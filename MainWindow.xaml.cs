@@ -53,6 +53,41 @@ namespace Password_Generator
             }
         }
 
+        private void PasswordChanged ( object sender, TextChangedEventArgs e )
+        {
+            string password = ((TextBox)sender).Text;
+            string strength = EvaluatePasswordStrength (password);
+            PasswordStrength.Text = "Your password is: " + strength;
+        }
+
+        public static string EvaluatePasswordStrength ( string password )
+        {
+            int score = 0;
+
+            if (password.Length < 1) return "Weak";
+
+            if (password.Length < 4) return "Very Weak";
+
+            if (password.Length >= 8) score++;
+            if (password.Length >= 12) score++;
+            if (password.Length >= 16) score++;
+            if (password.Length >= 20) score++;
+
+            if (password.Any(char.IsLetter)) score++;
+            if (password.Any(char.IsDigit)) score++;
+            if (password.Any(char.IsSymbol)) score++;
+
+            return score switch
+            {
+                0 => "Very Weak",
+                1 => "Weak",
+                2 => "Moderate",
+                3 => "Strong",
+                4 => "Very Strong",
+                _ => "Impossible Strong",
+            };
+        }
+
         private string GeneratePassword ( int length, bool includeUppercase, bool includeNumbers, bool includeSymbols )
         {
             if (length < 1) throw new ArgumentException ("Password length must be at least 1.", nameof (length));
