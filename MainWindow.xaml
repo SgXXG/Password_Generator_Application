@@ -2,9 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Password Generator" Height="280" Width="595"
+        Title="Password Generator" Height="414" Width="694"
         WindowStartupLocation="CenterScreen"
-        MinHeight="360" MinWidth="680">
+        MinHeight="450" MinWidth="720">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -31,17 +31,17 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Password Length:" VerticalAlignment="Center"/>
-        <TextBox Grid.Row="1" Text="3" Grid.Column="1" Margin="5" x:Name="PasswordLength" Style="{StaticResource MaterialDesignTextBoxBase}"/>
+        <TextBlock Text="Password Length:" FontSize="14" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="1" Text="3" Grid.Column="1" Margin="5" FontSize="14" x:Name="PasswordLength" Style="{StaticResource MaterialDesignTextBoxBase}"/>
 
-        <CheckBox Grid.Row="2" Content="Include Uppercase Letters" x:Name="IncludeUppercase" Style="{StaticResource MaterialDesignCheckBox}"/>
-        <CheckBox Grid.Row="3" Content="Include Numbers" x:Name="IncludeNumbers" Style="{StaticResource MaterialDesignCheckBox}"/>
-        <CheckBox Grid.Row="4" Content="Include Symbols" x:Name="IncludeSymbols" Style="{StaticResource MaterialDesignCheckBox}"/>
+        <CheckBox Grid.Row="2" Content="Include Uppercase Letters" FontSize="14" x:Name="IncludeUppercase" Style="{StaticResource MaterialDesignCheckBox}"/>
+        <CheckBox Grid.Row="3" Content="Include Numbers" FontSize="14" x:Name="IncludeNumbers" Style="{StaticResource MaterialDesignCheckBox}"/>
+        <CheckBox Grid.Row="4" Content="Include Symbols" FontSize="14" x:Name="IncludeSymbols" Style="{StaticResource MaterialDesignCheckBox}"/>
 
-        <Button Grid.Row="7" x:Name="CreatePassword" Content="Generate Password" Click="GeneratePassword_Click" Margin="5" Style="{StaticResource MaterialDesignRaisedButton}"/>
-        <TextBox Grid.Row="8" x:Name="GeneratedPassword" TextChanged="PasswordChanged" Margin="5" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AllowDrop="False" AcceptsReturn="True" IsReadOnly="True" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
-        <Button Grid.Row="9" Content="Save to file" Click="SaveToFile_Click" Margin="5" Style="{StaticResource MaterialDesignRaisedButton}"/>
-        <TextBlock Grid.Row="10" Text="Password Strength:" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="11" x:Name="PasswordStrength" VerticalAlignment="Center"/>
+        <Button Grid.Row="7" x:Name="CreatePassword" FontSize="14" Content="Generate Password" Click="GeneratePassword_Click" Margin="5" Style="{StaticResource MaterialDesignRaisedButton}"/>
+        <TextBox Grid.Row="8" x:Name="GeneratedPassword" FontSize="14" TextChanged="PasswordChanged" Margin="5" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AllowDrop="False" AcceptsReturn="True" IsReadOnly="True" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+        <Button Grid.Row="9" Content="Save to file" FontSize="14" Click="SaveToFile_Click" Margin="5" Style="{StaticResource MaterialDesignRaisedButton}"/>
+        <TextBlock Grid.Row="10" Text="Password Strength:" FontSize="14" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="11" x:Name="PasswordStrength" FontSize="14" VerticalAlignment="Center"/>
     </Grid>
 </Window>
