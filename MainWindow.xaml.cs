@@ -64,9 +64,9 @@ namespace Password_Generator
         {
             int score = 0;
 
-            if (password.Length < 1) return "Weak";
+            if (password.Length <= 1) return "Very Weak";
 
-            if (password.Length < 4) return "Very Weak";
+            if (password.Length < 4) return "Weak";
 
             if (password.Length >= 8) score++;
             if (password.Length >= 12) score++;
@@ -90,7 +90,11 @@ namespace Password_Generator
 
         private string GeneratePassword ( int length, bool includeUppercase, bool includeNumbers, bool includeSymbols )
         {
-            if (length < 1) throw new ArgumentException ("Password length must be at least 1.", nameof (length));
+            if (length < 1)
+            {
+                MessageBox.Show ("Password length must be at least 1.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return "";
+            }
 
             var charPool = new StringBuilder();
             charPool.Append (LowercaseLetters);

@@ -32,7 +32,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Password Length:" VerticalAlignment="Center"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" x:Name="PasswordLength" Style="{StaticResource MaterialDesignTextBoxBase}"/>
+        <TextBox Grid.Row="1" Text="3" Grid.Column="1" Margin="5" x:Name="PasswordLength" Style="{StaticResource MaterialDesignTextBoxBase}"/>
 
         <CheckBox Grid.Row="2" Content="Include Uppercase Letters" x:Name="IncludeUppercase" Style="{StaticResource MaterialDesignCheckBox}"/>
         <CheckBox Grid.Row="3" Content="Include Numbers" x:Name="IncludeNumbers" Style="{StaticResource MaterialDesignCheckBox}"/>
