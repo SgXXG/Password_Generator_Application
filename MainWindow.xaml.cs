@@ -100,7 +100,7 @@ namespace Password_Generator
             if (password.Any (char.IsDigit)) complexity *= 10;
             if (password.Any (ch => !char.IsLetterOrDigit (ch))) complexity *= 32; 
 
-            long attemptsPerSecond = 100000; 
+            long attemptsPerSecond = 1000000000; 
 
             long seconds = (long)Math.Pow(complexity, password.Length) / attemptsPerSecond;
 
