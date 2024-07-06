@@ -29,6 +29,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <TextBlock Text="Password Length:" FontSize="14" VerticalAlignment="Center"/>
@@ -43,5 +44,6 @@
         <Button Grid.Row="9" Content="Save to file" FontSize="14" Click="SaveToFile_Click" Margin="5" Style="{StaticResource MaterialDesignRaisedButton}"/>
         <TextBlock Grid.Row="10" Text="Password Strength:" FontSize="14" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="11" x:Name="PasswordStrength" FontSize="14" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="12" x:Name="CrackTime" FontSize="14" VerticalAlignment="Center"/>
     </Grid>
 </Window>

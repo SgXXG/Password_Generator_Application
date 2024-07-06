@@ -49,7 +49,7 @@ namespace Password_Generator
             saveFileDialog.Filter = "Text file (*.txt)|*.txt|All files (*.*)|*.*";
             if (saveFileDialog.ShowDialog() == true)
             {
-                File.WriteAllText (saveFileDialog.FileName, "Password Length: " +  PasswordLength.Text.ToString() + "\n" + "Password: " + GeneratedPassword.Text.ToString() + "\n" + PasswordStrength.Text.ToString() + "\n");
+                File.WriteAllText (saveFileDialog.FileName, "Password Length: " +  PasswordLength.Text.ToString() + "\n" + "Password: " + GeneratedPassword.Text.ToString() + "\n" + PasswordStrength.Text.ToString() + "\n" + CrackTime.Text.ToString() + "\n");
             }
         }
 
@@ -58,6 +58,9 @@ namespace Password_Generator
             string password = ((TextBox)sender).Text;
             string strength = EvaluatePasswordStrength (password);
             PasswordStrength.Text = "Your password is: " + strength;
+
+            string timeToCrack = EstimateTimeToCrack(password);
+            CrackTime.Text = $"Estimated time to crack: {timeToCrack}";
         }
 
         public static string EvaluatePasswordStrength ( string password )
@@ -76,8 +79,9 @@ namespace Password_Generator
             if (password.Any(char.IsLetter)) score++;
             if (password.Any(char.IsDigit)) score++;
             if (password.Any(char.IsSymbol)) score++;
+            if (password.Any (ch => !char.IsLetterOrDigit (ch))) score++;
 
-            return score switch
+                return score switch
             {
                 0 => "Very Weak",
                 1 => "Weak",
@@ -86,6 +90,26 @@ namespace Password_Generator
                 4 => "Very Strong",
                 _ => "Impossible Strong",
             };
+        }
+
+        public static string EstimateTimeToCrack ( string password )
+        {
+            long complexity = 1;
+            if (password.Any (char.IsLower)) complexity *= 26;
+            if (password.Any (char.IsUpper)) complexity *= 26;
+            if (password.Any (char.IsDigit)) complexity *= 10;
+            if (password.Any (ch => !char.IsLetterOrDigit (ch))) complexity *= 32; 
+
+            long attemptsPerSecond = 100000; 
+
+            long seconds = (long)Math.Pow(complexity, password.Length) / attemptsPerSecond;
+
+            if ((seconds < 60) && (seconds > 0)) return "Less than a minute";
+            if ((seconds < 3600) && (seconds > 0)) return $"{seconds / 60} minutes";
+            if ((seconds < 86400) && (seconds > 0)) return $"{seconds / 3600} hours";
+            if ((seconds < 2592000) && (seconds > 0)) return $"{seconds / 86400} days";
+            if ((seconds < 31104000) && (seconds > 0)) return $"{seconds / 2592000} months";
+            return $"{Math.Abs(seconds) / 31104000} years";
         }
 
         private string GeneratePassword ( int length, bool includeUppercase, bool includeNumbers, bool includeSymbols )
